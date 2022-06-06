@@ -6,14 +6,28 @@
  * Time:  15:36
  */
 
-import { Component } from 'react';
 import TodoListElement from '@/components/TodoListElement';
+import { filteredTodos } from '@/redux/todo.store';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-export default class TodoList extends Component {
-  render() {
-    const list = ['This is', 'An element', 'Of list'];
-    const listItem = list.map((element) => <TodoListElement text={element} key={element} />);
+const mapStateToProps = (state) => {
+  return {
+    todos: state.todos,
+    list: filteredTodos(state)
+  };
+};
 
-    return <div className="todo-list">{listItem}</div>;
-  }
+function TodoList({ list }) {
+  const listItem = list.map((element, index) => (
+    <TodoListElement id={index} text={element} key={element} />
+  ));
+
+  return <div className="todo-list">{listItem}</div>;
 }
+
+TodoList.propTypes = {
+  list: PropTypes.array
+};
+
+export default connect(mapStateToProps)(TodoList);

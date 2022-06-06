@@ -6,24 +6,28 @@
  * Time:  16:01
  */
 
-import { Component } from 'react';
+import { removeTodo } from '@/redux/todo.store';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
-export default class TodoListElement extends Component {
-  render() {
-    const text = this.props.text;
-    return (
-      <div className="element">
-        {text}
-        <div>
-          <button>Edit</button>
-          <button>Remove</button>
-        </div>
-      </div>
-    );
+export default function TodoListElement({ id, text }) {
+  const dispatch = useDispatch();
+
+  function onClickRemove() {
+    dispatch(removeTodo(id));
   }
+
+  return (
+    <div className="element">
+      {text}
+      <div>
+        <button onClick={onClickRemove}>Remove</button>
+      </div>
+    </div>
+  );
 }
 
-TodoListElement.propsTypes = {
+TodoListElement.propTypes = {
+  id: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired
 };
