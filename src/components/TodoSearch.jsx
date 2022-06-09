@@ -6,12 +6,35 @@
  * Time:  17:08
  */
 
-import { setSearchQuery } from '@/redux/todo.store';
+import TodoTagSelectOptions from '@/components/TodoTagSelectOptions';
+import { updateFilters } from '@/store/todo.store';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 export default function TodoSearch() {
-  const search = useSelector((state) => state.todos.search);
+  const filters = useSelector((state) => state.todos.filters);
+  const [search, setSearch] = useState(filters.search);
+  const [tags, setTags] = useState(filters.tags);
   const dispatch = useDispatch();
+
+  const handleTagsChange = (e) => {
+    const value = Array.from(e.target.selectedOptions, (option) => option.value);
+    setTags(value);
+  };
+
+  const onClickReset = () => {
+    setSearch('');
+    setTags([]);
+  };
+
+  useEffect(() => {
+    dispatch(
+      updateFilters({
+        search,
+        tags
+      })
+    );
+  }, [search, tags]);
 
   return (
     <div className="todo-search">
@@ -19,9 +42,14 @@ export default function TodoSearch() {
         type="search"
         placeholder="Search..."
         value={search}
-        onChange={(e) => dispatch(setSearchQuery(e.target.value))}
+        onChange={(e) => {
+          setSearch(e.target.value);
+        }}
       />
-      <code>{search}</code>
+      <select multiple={true} value={tags} onChange={handleTagsChange}>
+        <TodoTagSelectOptions />
+      </select>
+      <button onClick={onClickReset}>Reset</button>
     </div>
   );
 }

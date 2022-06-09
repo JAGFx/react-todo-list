@@ -6,28 +6,42 @@
  * Time:  16:01
  */
 
-import { removeTodo } from '@/redux/todo.store';
+import { removeTodo, STATE, updateTodo } from '@/store/todo.store';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
-export default function TodoListElement({ id, text }) {
+export default function TodoListElement({ uuid, text, state, tags = [] }) {
   const dispatch = useDispatch();
 
-  function onClickRemove() {
-    dispatch(removeTodo(id));
-  }
-
   return (
-    <div className="element">
-      {text}
+    <div className={'element ' + state}>
+      <span className="todo-label">{text}</span>
       <div>
-        <button onClick={onClickRemove}>Remove</button>
+        <button onClick={() => dispatch(removeTodo(uuid))}>Remove</button>
+        <button
+          onClick={() =>
+            dispatch(
+              updateTodo({
+                uuid,
+                state: STATE.DONE
+              })
+            )
+          }>
+          Done
+        </button>
+      </div>
+      <div>
+        {tags.map((tag) => (
+          <span key={tag}>{tag}</span>
+        ))}
       </div>
     </div>
   );
 }
 
 TodoListElement.propTypes = {
-  id: PropTypes.number.isRequired,
-  text: PropTypes.string.isRequired
+  uuid: PropTypes.string.isRequired,
+  state: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  tags: PropTypes.array.isRequired
 };

@@ -5,17 +5,25 @@
  * Date: 	06/06/2022
  * Time: 	20:37
  */
-import { addTodo } from '@/redux/todo.store';
+import TodoTagSelectOptions from '@/components/TodoTagSelectOptions';
+import { addTodo, TAGS } from '@/store/todo.store';
+import { generateTodoObject } from '@/utils/todo.utils';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 export default function TodoForm() {
   const [input, setInput] = useState('');
+  const [tags, setTags] = useState([TAGS.CAT1]);
   const dispatch = useDispatch();
 
-  function onAddTodo() {
-    dispatch(addTodo(input));
-  }
+  const onClickAddTodo = () => {
+    dispatch(addTodo(generateTodoObject(input, null, tags)));
+  };
+
+  const handleTagsInputChange = (e) => {
+    const value = Array.from(e.target.selectedOptions, (option) => option.value);
+    setTags(value);
+  };
 
   return (
     <div className="form">
@@ -25,7 +33,10 @@ export default function TodoForm() {
         onChange={(e) => setInput(e.target.value)}
         value={input}
       />
-      <button onClick={onAddTodo}>Add</button>
+      <select multiple={true} value={tags} onChange={handleTagsInputChange}>
+        <TodoTagSelectOptions />
+      </select>
+      <button onClick={onClickAddTodo}>Add</button>
     </div>
   );
 }

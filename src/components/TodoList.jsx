@@ -7,7 +7,7 @@
  */
 
 import TodoListElement from '@/components/TodoListElement';
-import { filteredTodos } from '@/redux/todo.store';
+import { filteredTodos } from '@/store/todo.store';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -19,11 +19,19 @@ const mapStateToProps = (state) => {
 };
 
 function TodoList({ list }) {
-  const listItem = list.map((element, index) => (
-    <TodoListElement id={index} text={element} key={element} />
-  ));
-
-  return <div className="todo-list">{listItem}</div>;
+  return (
+    <div className="todo-list">
+      {list.map((todo) => (
+        <TodoListElement
+          key={todo.uuid}
+          uuid={todo.uuid}
+          text={todo.text}
+          tags={todo.tags}
+          state={todo.state}
+        />
+      ))}
+    </div>
+  );
 }
 
 TodoList.propTypes = {
