@@ -6,7 +6,7 @@
  * Time:  19:50
  */
 
-import { generateTodoObject } from '@/utils/todo.utils';
+import { applyFiltersOnTodoList, generateTodoObject } from '@/utils/todo.utils';
 import { createSlice } from '@reduxjs/toolkit';
 
 export const STATE = {
@@ -67,17 +67,6 @@ export const todoSlice = createSlice({
 
 export const { addTodo, removeTodo, updateFilters, updateTodo } = todoSlice.actions;
 export const filteredTodos = (state) =>
-  state.todos.list.filter((todo) => {
-    const filters = state.todos.filters;
-    const matchText =
-      filters.search.length !== 0
-        ? todo.text.toLowerCase().includes(filters.search.toLowerCase())
-        : true;
-
-    const matchTags =
-      filters.tags.length !== 0 ? todo.tags.some((tag) => filters.tags.indexOf(tag) >= 0) : true;
-
-    return matchText && matchTags;
-  });
+  applyFiltersOnTodoList(state.todos.list, state.todos.filters);
 
 export default todoSlice.reducer;
