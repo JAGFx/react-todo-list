@@ -1,6 +1,6 @@
-import TodoForm from '@/components/TodoForm';
-import TodoList from '@/components/TodoList';
-import TodoSearch from '@/components/TodoSearch';
+import TodoForm from '@/Todo/components/TodoForm';
+import TodoList from '@/Todo/components/TodoList';
+import TodoSearch from '@/Todo/components/TodoSearch';
 import '@/assets/style/App.scss';
 
 export default function App() {

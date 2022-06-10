@@ -1,0 +1,17 @@
+/**
+ * @author:	Emmanuel SMITH <hey@emmanuel-smith.me>
+ * project:	react-learn-3
+ * file: 	todo-list.scss
+ * Date: 	10/06/2022
+ * Time: 	13:33
+ */
+
+.todo-list {
+	.element {
+		&.done {
+			.todo-label {
+				text-decoration: line-through;
+			}
+		}
+	}
+}

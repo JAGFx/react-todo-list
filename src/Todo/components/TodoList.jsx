@@ -6,8 +6,8 @@
  * Time:  15:36
  */
 
-import TodoListElement from '@/components/TodoListElement';
-import { filteredTodos } from '@/store/todo.store';
+import TodoListElement from '@/Todo/components/TodoListElement';
+import { filteredTodos } from '@/Todo/todo.store';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 

@@ -6,7 +6,7 @@
  * Time: 	20:03
  */
 
-import todoSlice from '@/store/todo.store';
+import todoSlice from '@/Todo/todo.store';
 import { configureStore } from '@reduxjs/toolkit';
 
 export default configureStore({

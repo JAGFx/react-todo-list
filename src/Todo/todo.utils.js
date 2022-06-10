@@ -5,8 +5,8 @@
  * Date:  09/06/2022
  * Time:  19:17
  */
-import { STATE } from '@/store/todo.store';
-import { generateUuid } from '@/utils/generator.utils';
+import { STATE } from '@/Todo/todo.store';
+import { generateUuid } from '@/shared/generator.utils';
 
 export const generateTodoObject = (text, uuid = null, tags = [], state = STATE.TODO) => {
   return {

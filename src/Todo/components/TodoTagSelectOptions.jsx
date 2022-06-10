@@ -5,7 +5,7 @@
  * Date:  09/06/2022
  * Time:  19:21
  */
-import { TAGS } from '@/store/todo.store';
+import { TAGS } from '@/Todo/todo.store';
 
 export default function TodoTagSelectOptions() {
   return (

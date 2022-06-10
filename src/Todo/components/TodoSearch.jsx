@@ -6,8 +6,8 @@
  * Time:  17:08
  */
 
-import TodoTagSelectOptions from '@/components/TodoTagSelectOptions';
-import { updateFilters } from '@/store/todo.store';
+import TodoTagSelectOptions from '@/Todo/components/TodoTagSelectOptions';
+import { updateFilters } from '@/Todo/todo.store';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 

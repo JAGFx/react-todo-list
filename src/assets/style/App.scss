@@ -1,9 +1,1 @@
-.todo-list {
-  .element {
-    &.done {
-      .todo-label {
-        text-decoration: line-through;
-      }
-    }
-  }
-}
+@import "src/Todo/todo.style";

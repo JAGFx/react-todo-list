@@ -5,9 +5,9 @@
  * Date: 	06/06/2022
  * Time: 	20:37
  */
-import TodoTagSelectOptions from '@/components/TodoTagSelectOptions';
-import { addTodo, TAGS } from '@/store/todo.store';
-import { generateTodoObject } from '@/utils/todo.utils';
+import TodoTagSelectOptions from '@/Todo/components/TodoTagSelectOptions';
+import { addTodo, TAGS } from '@/Todo/todo.store';
+import { generateTodoObject } from '@/Todo/todo.utils';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 

@@ -6,7 +6,7 @@
  * Time:  16:01
  */
 
-import { removeTodo, STATE, updateTodo } from '@/store/todo.store';
+import { removeTodo, STATE, updateTodo } from '@/Todo/todo.store';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 

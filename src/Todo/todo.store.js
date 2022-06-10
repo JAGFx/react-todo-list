@@ -6,7 +6,7 @@
  * Time:  19:50
  */
 
-import { applyFiltersOnTodoList, generateTodoObject } from '@/utils/todo.utils';
+import { applyFiltersOnTodoList, generateTodoObject } from '@/Todo/todo.utils';
 import { createSlice } from '@reduxjs/toolkit';
 
 export const STATE = {
