@@ -35,6 +35,7 @@ export default function SearchFilters() {
           label="Categories"
           onShow={(show) => setShowCategories(show)}
         />
+        <span className="vertical-line background-20" />
         <SearchFiltersActiveRow />
       </Stack>
       <SearchFilterDropdownContent show={showCategories}>

@@ -20,8 +20,7 @@ export default function TodoListElement({ uuid, text, state, tags = [] }) {
     if (state === STATE.DONE)
       return {
         ...props,
-        disabled: 'disabled'
-        // Variant: 'secondary'
+        variant: 'secondary'
       };
 
     return props;

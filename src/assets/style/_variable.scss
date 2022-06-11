@@ -5,3 +5,14 @@
  * Date: 	10/06/2022
  * Time: 	13:42
  */
+@use "sass:color";
+
+$c-accent:               #06b1f3;
+$c-background1:          #161e3a;
+$c-background2:          #1e1426;
+$c-background3:          $c-accent;
+$c-background4:          #05ccac;
+$c-white:                #fff;
+$c-background1-light-10: color.adjust($c-background1, $lightness: 10%);
+$c-background1-light-20: color.adjust($c-background1, $lightness: 20%);
+$c-background2-dark-10:  color.adjust($c-background2, $lightness: -10%);

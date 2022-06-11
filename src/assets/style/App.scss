@@ -1,4 +1,22 @@
+@import "src/assets/style/variable";
 @import "src/Todo/todo";
 @import "src/Search/style/search";
-@import 'src/assets/style/bootstrap';
+@import "src/assets/style/bootstrap";
 @import "src/assets/style/fontawesome";
+@import "src/assets/style/background";
+
+body {
+  height: 100vh;
+  background: linear-gradient($c-background1, $c-background2) no-repeat;
+}
+
+.vertical-line {
+  height: 1rem;
+  border-radius: 1rem;
+  width: 0;
+  border-left: 1px solid transparent;
+
+  &.background-20 {
+    border-color: $c-background1-light-20;
+  }
+}

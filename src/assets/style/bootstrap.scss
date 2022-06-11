@@ -5,10 +5,19 @@
  * Date: 	10/06/2022
  * Time: 	13:43
  */
+@use "sass:color";
 
 @import "variable";
 
-//$body-bg: #d5d5d5;
+$body-color:              $c-white;
+$primary:                 $c-accent;
+$secondary:               $c-background2-dark-10;
+$input-bg:                $c-background1-light-10;
+$input-border-color:      $c-background1-light-20;
+$list-group-bg:           $c-background1-light-10;
+$list-group-border-color: $c-background1-light-20;
+$list-group-color:        $c-white;
+
 
 // Configuration
 @import "bootstrap/scss/functions";
@@ -37,5 +46,14 @@
 @import "bootstrap/scss/utilities/api";
 
 .btn.btn-xs {
-	@include button-size(.3rem, .5rem, 0.875em, $border-radius);
+  @include button-size(0.3rem, 0.5rem, 0.875em, $border-radius);
+}
+
+.list-group-item.list-group-item-secondary {
+  background: color.adjust($c-background1-light-10, $alpha: -0.5);
+  color:      $c-white;
+
+  &.done {
+    color: $c-background1-light-20;
+  }
 }
