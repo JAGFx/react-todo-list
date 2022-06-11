@@ -1,17 +1,21 @@
-import TodoForm from '@/Todo/components/TodoForm';
-import TodoList from '@/Todo/components/TodoList';
-import TodoSearch from '@/Todo/components/TodoSearch';
 import '@/assets/style/App.scss';
+import TodoList from '@/Todo/components/TodoList';
+import SearchBar from '@/Search/SearchBar';
+import { Container, Stack } from 'react-bootstrap';
 
 export default function App() {
   return (
-    <div>
-      <h1>Hello world</h1>
-      <TodoSearch />
-      <hr />
-      <TodoForm />
-      <hr />
-      <TodoList />
-    </div>
+    <Container className="p-3">
+      <Stack gap="3">
+        <nav>Plop</nav>
+        <header>
+          <SearchBar />
+        </header>
+        {/*<TodoForm />*/}
+        <main>
+          <TodoList />
+        </main>
+      </Stack>
+    </Container>
   );
 }

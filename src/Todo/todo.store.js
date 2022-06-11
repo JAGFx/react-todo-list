@@ -49,10 +49,7 @@ export const todoSlice = createSlice({
       }
     },
     updateFilters: (state, action) => {
-      state.filters = {
-        search: action.payload.search,
-        tags: [...action.payload.tags]
-      };
+      state.filters = Object.assign({}, state.filters, action.payload);
     },
     updateTodo: (state, action) => {
       const uuid = action.payload.uuid;

@@ -1,0 +1,17 @@
+/**
+ * @author:	Emmanuel SMITH <hey@emmanuel-smith.me>
+ * project:	react-learn-3
+ * file: 	search.scss
+ * Date: 	11/06/2022
+ * Time: 	10:26
+ */
+
+.search-links {
+	.search-link {
+		cursor: pointer;
+		
+		> i {
+			margin-left: .5rem;
+		}
+	}
+}
