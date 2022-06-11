@@ -6,36 +6,65 @@
  * Time:  16:01
  */
 
-import { removeTodo, STATE, updateTodo } from '@/Todo/todo.store';
+import { STATE, removeTodo, updateTodo } from '@/Todo/todo.store';
 import PropTypes from 'prop-types';
+import { Button, ListGroup, Stack } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 
 export default function TodoListElement({ uuid, text, state, tags = [] }) {
   const dispatch = useDispatch();
 
+  const listProps = () => {
+    const props = {};
+
+    if (state === STATE.DONE)
+      return {
+        ...props,
+        disabled: 'disabled'
+        // Variant: 'secondary'
+      };
+
+    return props;
+  };
+
   return (
-    <div className={'element ' + state}>
-      <span className="todo-label">{text}</span>
-      <div>
-        <button onClick={() => dispatch(removeTodo(uuid))}>Remove</button>
-        <button
-          onClick={() =>
-            dispatch(
-              updateTodo({
-                uuid,
-                state: STATE.DONE
-              })
-            )
-          }>
-          Done
-        </button>
-      </div>
-      <div>
-        {tags.map((tag) => (
-          <span key={tag}>{tag}</span>
-        ))}
-      </div>
-    </div>
+    <ListGroup.Item className={`element ${state}`} {...listProps()}>
+      <Stack direction="horizontal" gap="2">
+        <Stack gap="2">
+          <Stack direction="horizontal" gap="2">
+            {tags.map((tag) => (
+              <span className="badge rounded-pill bg-primary" key={tag}>
+                {tag}
+              </span>
+            ))}
+          </Stack>
+          <span className="todo-label">{text}</span>
+        </Stack>
+        <Stack direction="horizontal" gap="2">
+          <Button
+            onClick={() => dispatch(removeTodo(uuid))}
+            size="xs"
+            variant="outline-danger">
+            <i className="fa-solid fa-trash-can" />
+          </Button>
+          {state !== STATE.DONE && (
+            <Button
+              onClick={() =>
+                dispatch(
+                  updateTodo({
+                    uuid,
+                    state: STATE.DONE
+                  })
+                )
+              }
+              size="xs"
+              variant="outline-success">
+              <i className="fa-solid fa-check" />
+            </Button>
+          )}
+        </Stack>
+      </Stack>
+    </ListGroup.Item>
   );
 }
 

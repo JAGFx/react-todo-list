@@ -40,7 +40,9 @@ export const todoSlice = createSlice({
       state.list.unshift(action.payload);
     },
     removeTodo: (state, action) => {
-      const index = state.list.findIndex((todo) => (todo.uuid = action.payload));
+      const index = state.list.findIndex(
+        (todo) => (todo.uuid = action.payload)
+      );
 
       if (index !== -1) {
         const start = state.list.slice(0, index);
@@ -49,21 +51,31 @@ export const todoSlice = createSlice({
       }
     },
     updateFilters: (state, action) => {
-      state.filters = Object.assign({}, state.filters, action.payload);
+      state.filters = { ...state.filters, ...action.payload };
     },
     updateTodo: (state, action) => {
-      const uuid = action.payload.uuid;
+      const { uuid } = action.payload;
       const todo = state.list.filter((todo) => todo.uuid === uuid);
 
       if (todo !== undefined) {
-        state.list.map((todo) => (todo.uuid === uuid ? Object.assign(todo, action.payload) : todo));
+        state.list.map((todo) =>
+          todo.uuid === uuid ? Object.assign(todo, action.payload) : todo
+        );
       }
     }
   }
 });
 
-export const { addTodo, removeTodo, updateFilters, updateTodo } = todoSlice.actions;
+export const { addTodo, removeTodo, updateFilters, updateTodo } =
+  todoSlice.actions;
 export const filteredTodos = (state) =>
   applyFiltersOnTodoList(state.todos.list, state.todos.filters);
+
+export const hasFilters = (state) => {
+  return (
+    state.todos.filters.search.length !== 0 ||
+    state.todos.filters.tags.length !== 0
+  );
+};
 
 export default todoSlice.reducer;

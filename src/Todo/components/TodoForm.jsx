@@ -5,8 +5,8 @@
  * Date: 	06/06/2022
  * Time: 	20:37
  */
-import TodoTagSelectOptions from '@/Todo/components/TodoTagSelectOptions';
-import { addTodo, TAGS } from '@/Todo/todo.store';
+import TodoTagChoiceInput from '@/Todo/components/TodoTagChoiceInput';
+import { TAGS, addTodo } from '@/Todo/todo.store';
 import { generateTodoObject } from '@/Todo/todo.utils';
 import { useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
@@ -24,7 +24,10 @@ export default function TodoForm() {
   };
 
   const handleTagsInputChange = (e) => {
-    const value = Array.from(e.target.selectedOptions, (option) => option.value);
+    const value = Array.from(
+      e.target.selectedOptions,
+      (option) => option.value
+    );
     setTags(value);
   };
 
@@ -33,22 +36,24 @@ export default function TodoForm() {
       <Button className="rounded-circle" onClick={() => setShowDialog(true)}>
         +
       </Button>
-      <Modal size="lg" centered show={showDialog} onHide={() => setShowDialog(false)}>
+      <Modal
+        centered
+        onHide={() => setShowDialog(false)}
+        show={showDialog}
+        size="lg">
         <Modal.Body className="form">
           <Form.Group className="mb-3">
             <Form.Label>Todo</Form.Label>
             <Form.Control
-              type="text"
-              placeholder="Do something..."
               onChange={(e) => setInput(e.target.value)}
+              placeholder="Do something..."
+              type="text"
               value={input}
             />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Tags</Form.Label>
-            <Form.Select multiple={true} value={tags} onChange={handleTagsInputChange}>
-              <TodoTagSelectOptions />
-            </Form.Select>
+            <TodoTagChoiceInput onChange={handleTagsInputChange} tags={tags} />
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>

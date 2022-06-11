@@ -9,6 +9,7 @@
 import TodoListElement from '@/Todo/components/TodoListElement';
 import { filteredTodos } from '@/Todo/todo.store';
 import PropTypes from 'prop-types';
+import { ListGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
@@ -20,17 +21,17 @@ const mapStateToProps = (state) => {
 
 function TodoList({ list }) {
   return (
-    <div className="todo-list">
+    <ListGroup className="todo-list">
       {list.map((todo) => (
         <TodoListElement
           key={todo.uuid}
-          uuid={todo.uuid}
-          text={todo.text}
-          tags={todo.tags}
           state={todo.state}
+          tags={todo.tags}
+          text={todo.text}
+          uuid={todo.uuid}
         />
       ))}
-    </div>
+    </ListGroup>
   );
 }
 

@@ -8,7 +8,12 @@
 import { generateUuid } from '@/shared/generator.utils';
 import { STATE } from '@/Todo/todo.store';
 
-export const generateTodoObject = (text, uuid = null, tags = [], state = STATE.TODO) => {
+export const generateTodoObject = (
+  text,
+  uuid = null,
+  tags = [],
+  state = STATE.TODO
+) => {
   return {
     uuid: uuid === null ? generateUuid() : uuid,
     text,
@@ -25,14 +30,18 @@ export const applyFiltersOnTodoList = (list, filters) => {
     if (!Object.hasOwn(filters, 'tags'))
       throw new Error('Tags entry was not found on todo filters');
 
-    let filterMatches = [true];
+    const filterMatches = [true];
 
     if (filters.search.length !== 0) {
-      filterMatches.push(todo.text.toLowerCase().includes(filters.search.toLowerCase()));
+      filterMatches.push(
+        todo.text.toLowerCase().includes(filters.search.toLowerCase())
+      );
     }
 
     if (filters.tags.length !== 0) {
-      filterMatches.push(todo.tags.some((tag) => filters.tags.indexOf(tag) >= 0));
+      filterMatches.push(
+        todo.tags.some((tag) => filters.tags.indexOf(tag) >= 0)
+      );
     }
 
     return filterMatches.every((match) => match);
