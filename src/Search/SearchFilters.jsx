@@ -12,7 +12,7 @@ import SearchFiltersActiveRow from '@/Search/SearchFiltersActiveRow';
 import TodoTagChoiceInput from '@/Todo/components/TodoTagChoiceInput';
 import { updateFilters } from '@/Todo/todo.store';
 import { useState } from 'react';
-import { Stack } from 'react-bootstrap';
+import { Form, Stack } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function SearchFilters() {
@@ -34,6 +34,16 @@ export default function SearchFilters() {
         <SearchFilterDropdownButton
           label="Categories"
           onShow={(show) => setShowCategories(show)}
+        />
+        <span className="vertical-line background-20" />
+        <Form.Check
+          type="switch"
+          id="search-filter-visibility"
+          label="Show completed"
+          checked={filters.showCompleted}
+          onChange={(e) =>
+            dispatch(updateFilters({ showCompleted: e.target.checked }))
+          }
         />
         <span className="vertical-line background-20" />
         <SearchFiltersActiveRow />

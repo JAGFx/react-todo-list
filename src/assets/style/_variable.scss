@@ -15,4 +15,5 @@ $c-background4:          #05ccac;
 $c-white:                #fff;
 $c-background1-light-10: color.adjust($c-background1, $lightness: 10%);
 $c-background1-light-20: color.adjust($c-background1, $lightness: 20%);
+$c-background2-light-10:  color.adjust($c-background2, $lightness: 10%);
 $c-background2-dark-10:  color.adjust($c-background2, $lightness: -10%);

@@ -28,7 +28,8 @@ const initialState = {
   ],
   filters: {
     search: '',
-    tags: []
+    tags: [],
+    showCompleted: true
   }
 };
 
@@ -74,7 +75,8 @@ export const filteredTodos = (state) =>
 export const hasFilters = (state) => {
   return (
     state.todos.filters.search.length !== 0 ||
-    state.todos.filters.tags.length !== 0
+    state.todos.filters.tags.length !== 0 ||
+    state.todos.filters.showCompleted
   );
 };
 

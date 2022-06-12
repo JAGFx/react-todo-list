@@ -11,12 +11,17 @@
 
 $body-color:              $c-white;
 $primary:                 $c-accent;
-$secondary:               $c-background2-dark-10;
+$secondary:               $c-background2;
 $input-bg:                $c-background1-light-10;
 $input-border-color:      $c-background1-light-20;
 $list-group-bg:           $c-background1-light-10;
 $list-group-border-color: $c-background1-light-20;
 $list-group-color:        $c-white;
+$modal-content-bg: $c-background1;
+$modal-content-border-color: $c-background2-light-10;
+$modal-content-color: $c-white;
+$modal-footer-footer-bg: $c-background1-light-10;
+$modal-footer-border-color: $c-background1-light-20;
 
 
 // Configuration
@@ -56,4 +61,8 @@ $list-group-color:        $c-white;
   &.done {
     color: $c-background1-light-20;
   }
+}
+
+.modal-dialog .modal-footer {
+  background: $modal-footer-footer-bg;
 }

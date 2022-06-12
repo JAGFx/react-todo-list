@@ -9,7 +9,7 @@ import TodoTagChoiceInput from '@/Todo/components/TodoTagChoiceInput';
 import { TAGS, addTodo } from '@/Todo/todo.store';
 import { generateTodoObject } from '@/Todo/todo.utils';
 import { useState } from 'react';
-import { Button, Form, Modal } from 'react-bootstrap';
+import { Button, FloatingLabel, Form, Modal } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 
 export default function TodoForm() {
@@ -23,12 +23,8 @@ export default function TodoForm() {
     dispatch(addTodo(generateTodoObject(input, null, tags)));
   };
 
-  const handleTagsInputChange = (e) => {
-    const value = Array.from(
-      e.target.selectedOptions,
-      (option) => option.value
-    );
-    setTags(value);
+  const handleTagsInputChange = (tags) => {
+    setTags(tags);
   };
 
   return (
@@ -42,18 +38,22 @@ export default function TodoForm() {
         show={showDialog}
         size="lg">
         <Modal.Body className="form">
-          <Form.Group className="mb-3">
-            <Form.Label>Todo</Form.Label>
+          <FloatingLabel label="Todo" className="mb-3">
             <Form.Control
               onChange={(e) => setInput(e.target.value)}
               placeholder="Do something..."
               type="text"
               value={input}
+              required
             />
-          </Form.Group>
+          </FloatingLabel>
           <Form.Group className="mb-3">
             <Form.Label>Tags</Form.Label>
-            <TodoTagChoiceInput onChange={handleTagsInputChange} tags={tags} />
+            <TodoTagChoiceInput
+              name="add-tags"
+              onChange={handleTagsInputChange}
+              tags={tags}
+            />
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>

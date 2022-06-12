@@ -8,7 +8,7 @@
 
 import SearchFilters from '@/Search/SearchFilters';
 import { hasFilters, updateFilters } from '@/Todo/todo.store';
-import { Button, Form, Stack } from 'react-bootstrap';
+import { Button, FloatingLabel, Form, Stack } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function SearchField() {
@@ -20,7 +20,8 @@ export default function SearchField() {
     dispatch(
       updateFilters({
         search: '',
-        tags: []
+        tags: [],
+        showCompleted: false
       })
     );
   };
@@ -29,14 +30,15 @@ export default function SearchField() {
     <Form className="todo-search">
       <Stack gap="1">
         <Stack direction="horizontal" gap="2">
-          <Form.Control
-            onChange={(e) => {
-              dispatch(updateFilters({ search: e.target.value }));
-            }}
-            placeholder="Search..."
-            type="search"
-            value={filters.search}
-          />
+          <FloatingLabel label="Search" className="w-100">
+            <Form.Control
+              onChange={(e) => {
+                dispatch(updateFilters({ search: e.target.value }));
+              }}
+              type="text"
+              value={filters.search}
+            />
+          </FloatingLabel>
           {hasFiltersActive ? (
             <Button className="rounded-circle" onClick={onClickReset}>
               <i className="fa-solid fa-xmark" />

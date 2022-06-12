@@ -26,13 +26,19 @@ export default function TodoListElement({ uuid, text, state, tags = [] }) {
     return props;
   };
 
+  const tagBadgeClass = () => {
+    return state === STATE.DONE ? 'bg-secondary' : 'bg-primary';
+  };
+
   return (
     <ListGroup.Item className={`element ${state}`} {...listProps()}>
       <Stack direction="horizontal" gap="2">
         <Stack gap="2">
           <Stack direction="horizontal" gap="2">
             {tags.map((tag) => (
-              <span className="badge rounded-pill bg-primary" key={tag}>
+              <span
+                className={'badge rounded-pill ' + tagBadgeClass()}
+                key={tag}>
                 {tag}
               </span>
             ))}

@@ -10,7 +10,11 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Form } from 'react-bootstrap';
 
-export default function TodoTagChoiceInput({ tags, onChange }) {
+export default function TodoTagChoiceInput({
+  name = 'tags-in',
+  tags,
+  onChange
+}) {
   const [checkedState, setCheckedState] = useState([...tags]);
 
   const handleOnChange = (event, tag) => {
@@ -28,10 +32,9 @@ export default function TodoTagChoiceInput({ tags, onChange }) {
     <>
       {Object.values(TAGS).map((tag) => (
         <Form.Check
-          id={tag}
+          id={name + tag}
           key={tag}
           label={tag}
-          name={tag}
           type="checkbox"
           value={tag}
           checked={checkedState.indexOf(tag) !== -1}
@@ -43,6 +46,7 @@ export default function TodoTagChoiceInput({ tags, onChange }) {
 }
 
 TodoTagChoiceInput.propTypes = {
+  name: PropTypes.string,
   tags: PropTypes.array.isRequired,
   onChange: PropTypes.func.isRequired
 };
