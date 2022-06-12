@@ -15,5 +15,12 @@ describe('Generator utils test', () => {
       expect(typeof uuid).toEqual('string');
       expect(uuid).toHaveLength(36);
     });
+
+    test('Generated UUID match to format', () => {
+      const uuid = generateUuid();
+      const regex = /^(\w{8})-(\w{4})-(\w{4})-(\w{4})-(\w{12})$/;
+
+      expect(regex.test(uuid)).toBeTruthy();
+    });
   });
 });
