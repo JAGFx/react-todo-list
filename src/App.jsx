@@ -1,4 +1,4 @@
-import '@/assets/style/App.scss';
+import '@/shared/style/App.scss';
 import TodoForm from '@/Todo/components/TodoForm';
 import TodoList from '@/Todo/components/TodoList';
 import SearchField from '@/Search/SearchField';

@@ -7,7 +7,7 @@
  */
 
 @use "sass:color";
-@import "src/assets/style/variable";
+@import "variable";
 
 .background {
   animation: slide 3s ease-in-out infinite alternate;

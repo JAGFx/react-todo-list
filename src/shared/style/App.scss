@@ -1,9 +1,9 @@
-@import "src/assets/style/variable";
+@import "variable";
 @import "src/Todo/todo";
 @import "src/Search/style/search";
-@import "src/assets/style/bootstrap";
-@import "src/assets/style/fontawesome";
-@import "src/assets/style/background";
+@import "bootstrap";
+@import "fontawesome";
+@import "background";
 
 body {
   height: 100vh;
