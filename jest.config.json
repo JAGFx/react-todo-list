@@ -1,0 +1,13 @@
+{
+	"transform" : {},
+	"roots": ["<rootDir>/src"],
+	"moduleNameMapper": {
+		"@/(.*)$": "<rootDir>/src/$1"
+	},
+	"coverageDirectory": "coverage",
+	"collectCoverageFrom": ["src/**/*.js"],
+	"testEnvironment": "jsdom",
+	"setupFiles": [
+		"<rootDir>/jest.setup.js"
+	]
+}
