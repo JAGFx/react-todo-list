@@ -6,7 +6,8 @@
  * Time:  16:01
  */
 
-import { STATE, removeTodo, updateTodo } from '@/Todo/todo.store';
+import { STATE } from '@/Todo/todo.constantes.js';
+import { removeTodo, updateTodo } from '@/Todo/todo.store';
 import PropTypes from 'prop-types';
 import { Button, ListGroup, Stack } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';

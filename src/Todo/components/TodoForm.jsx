@@ -6,7 +6,8 @@
  * Time: 	20:37
  */
 import TodoTagChoiceInput from '@/Todo/components/TodoTagChoiceInput';
-import { TAGS, addTodo } from '@/Todo/todo.store';
+import { TAGS } from '@/Todo/todo.constantes.js';
+import { addTodo } from '@/Todo/todo.store';
 import { generateTodoObject } from '@/Todo/todo.utils';
 import { useState } from 'react';
 import { Button, FloatingLabel, Form, Modal } from 'react-bootstrap';

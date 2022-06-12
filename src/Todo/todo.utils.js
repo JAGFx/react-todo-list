@@ -6,7 +6,7 @@
  * Time:  19:17
  */
 import { generateUuid } from '@/shared/generator.utils';
-import { STATE } from '@/Todo/todo.store';
+import { STATE } from '@/Todo/todo.constantes.js';
 
 export const generateTodoObject = (
   text,

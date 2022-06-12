@@ -6,19 +6,9 @@
  * Time:  19:50
  */
 
+import { TAGS } from '@/Todo/todo.constantes.js';
 import { applyFiltersOnTodoList, generateTodoObject } from '@/Todo/todo.utils';
 import { createSlice } from '@reduxjs/toolkit';
-
-export const STATE = {
-  TODO: 'todo',
-  DONE: 'done'
-};
-
-export const TAGS = {
-  CAT1: 'cat1',
-  CAT2: 'cat2',
-  CAT3: 'cat3'
-};
 
 const initialState = {
   list: [

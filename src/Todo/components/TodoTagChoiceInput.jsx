@@ -5,7 +5,7 @@
  * Date:  09/06/2022
  * Time:  19:21
  */
-import { TAGS } from '@/Todo/todo.store';
+import { TAGS } from '@/Todo/todo.constantes.js';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Form } from 'react-bootstrap';
