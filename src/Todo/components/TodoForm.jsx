@@ -5,6 +5,8 @@
  * Date: 	06/06/2022
  * Time: 	20:37
  */
+import { getRandomString } from '@/shared/randomizer.api.js';
+import useAsynchronous from '@/shared/useAsynchronous.js';
 import TodoTagChoiceInput from '@/Todo/components/TodoTagChoiceInput';
 import { TAGS } from '@/Todo/todo.constantes.js';
 import { addTodo } from '@/Todo/todo.store';
@@ -17,6 +19,7 @@ export default function TodoForm() {
   const [showDialog, setShowDialog] = useState(false);
   const [input, setInput] = useState('');
   const [tags, setTags] = useState([TAGS.CAT1]);
+  const [callRandomizeString, loading] = useAsynchronous(getRandomString);
   const dispatch = useDispatch();
 
   const onClickAddTodo = () => {
@@ -24,8 +27,10 @@ export default function TodoForm() {
     dispatch(addTodo(generateTodoObject(input, null, tags)));
   };
 
-  const handleTagsInputChange = (tags) => {
-    setTags(tags);
+  const onClickRandomize = () => {
+    callRandomizeString().then((text) => {
+      setInput(text);
+    });
   };
 
   return (
@@ -52,12 +57,20 @@ export default function TodoForm() {
             <Form.Label>Tags</Form.Label>
             <TodoTagChoiceInput
               name="add-tags"
-              onChange={handleTagsInputChange}
+              onChange={(tags) => setTags(tags)}
               tags={tags}
             />
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
+          <Button
+            onClick={!loading ? onClickRandomize : null}
+            disabled={loading}
+            size="sm"
+            variant="secondary">
+            {loading ? 'Loading…' : 'Randomize'}
+          </Button>
+
           <Button onClick={onClickAddTodo} size="sm">
             Add
           </Button>
