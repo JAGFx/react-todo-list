@@ -7,7 +7,7 @@
  */
 import axios from 'axios';
 
-export const host = 'http://asdfast.beobit.net/api';
+export const host = 'https://asdfast.beobit.net/api';
 
 export const getRandomString = () => {
   return new Promise((resolve, reject) => {
