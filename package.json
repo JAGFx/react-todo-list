@@ -15,7 +15,7 @@
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest  --config=jest.config.json",
     "test:coverage": "npm run test -- --coverage",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.1.1",
