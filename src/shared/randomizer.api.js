@@ -7,17 +7,20 @@
  */
 import axios from 'axios';
 
-export const host = 'https://asdfast.beobit.net/api';
+export const host = 'https://baconipsum.com/api/';
 
 export const getRandomString = () => {
   return new Promise((resolve, reject) => {
-    const query = new URLSearchParams({ type: 'word', length: 8 });
+    const query = new URLSearchParams({
+      type: 'meat-and-filler',
+      sentences: 1
+    });
     const url = `${host}?${query.toString()}`;
 
     axios
       .get(url)
       .then((response) => {
-        resolve(response.data.text);
+        resolve(response.data[0]);
       })
       .catch((e) => reject(e));
   });

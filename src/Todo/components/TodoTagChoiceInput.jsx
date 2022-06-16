@@ -37,7 +37,7 @@ export default function TodoTagChoiceInput({
           label={tag}
           type="checkbox"
           value={tag}
-          checked={checkedState.indexOf(tag) !== -1}
+          checked={tags.indexOf(tag) !== -1}
           onChange={(e) => handleOnChange(e, tag)}
         />
       ))}

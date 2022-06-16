@@ -5,6 +5,7 @@
  * Date: 	06/06/2022
  * Time: 	20:37
  */
+import { getRandomObjectProperty } from '@/shared/generator.utils.js';
 import { getRandomString } from '@/shared/randomizer.api.js';
 import useAsynchronous from '@/shared/useAsynchronous.js';
 import TodoTagChoiceInput from '@/Todo/components/TodoTagChoiceInput';
@@ -30,7 +31,14 @@ export default function TodoForm() {
   const onClickRandomize = () => {
     callRandomizeString().then((text) => {
       setInput(text);
+      setTags([getRandomObjectProperty(TAGS)]);
     });
+  };
+
+  const onHideModal = () => {
+    setShowDialog(false);
+    setInput('');
+    setTags([TAGS.CAT1]);
   };
 
   return (
@@ -38,11 +46,7 @@ export default function TodoForm() {
       <Button className="rounded-circle" onClick={() => setShowDialog(true)}>
         +
       </Button>
-      <Modal
-        centered
-        onHide={() => setShowDialog(false)}
-        show={showDialog}
-        size="lg">
+      <Modal centered onHide={onHideModal} show={showDialog} size="lg">
         <Modal.Body className="form">
           <FloatingLabel label="Todo" className="mb-3">
             <Form.Control
