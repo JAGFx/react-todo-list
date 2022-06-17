@@ -8,6 +8,7 @@
 
 import { STATE } from '@/Todo/todo.constantes.js';
 import { removeTodo, updateTodo } from '@/Todo/todo.store';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import { Button, ListGroup, Stack } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
@@ -51,7 +52,7 @@ export default function TodoListElement({ uuid, text, state, tags = [] }) {
             onClick={() => dispatch(removeTodo(uuid))}
             size="xs"
             variant="outline-danger">
-            <i className="fa-solid fa-trash-can" />
+            <FontAwesomeIcon icon="trash-can" />
           </Button>
           {state !== STATE.DONE && (
             <Button
@@ -65,7 +66,7 @@ export default function TodoListElement({ uuid, text, state, tags = [] }) {
               }
               size="xs"
               variant="outline-success">
-              <i className="fa-solid fa-check" />
+              <FontAwesomeIcon icon="check" />
             </Button>
           )}
         </Stack>

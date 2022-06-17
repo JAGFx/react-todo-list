@@ -5,6 +5,7 @@
  * Date:  11/06/2022
  * Time:  18:54
  */
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
@@ -20,9 +21,9 @@ export default function SearchFilterDropdownButton({ label, onShow }) {
     <div className="search-link" onClick={onClickSearchLink}>
       <small>{label}</small>
       {show ? (
-        <i className="fa-solid fa-angle-up" />
+        <FontAwesomeIcon icon="angle-up" />
       ) : (
-        <i className="fa-solid fa-angle-down" />
+        <FontAwesomeIcon icon="angle-down" />
       )}
     </div>
   );

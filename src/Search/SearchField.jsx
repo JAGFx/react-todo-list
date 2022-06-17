@@ -8,6 +8,7 @@
 
 import SearchFilters from '@/Search/SearchFilters';
 import { hasFilters, updateFilters } from '@/Todo/todo.store';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, FloatingLabel, Form, Stack } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -41,7 +42,7 @@ export default function SearchField() {
           </FloatingLabel>
           {hasFiltersActive ? (
             <Button className="rounded-circle" onClick={onClickReset}>
-              <i className="fa-solid fa-xmark" />
+              <FontAwesomeIcon icon="xmark" />
             </Button>
           ) : null}
         </Stack>
