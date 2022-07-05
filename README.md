@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="doc/React_logo_wordmark-700x235.png" />
+  <img src="doc/20220617_092720.gif" />
 </p>
 <h2 align="center">Learning ReactJs - Todo list</h2>
 <p align="center">This project allows me to learn how ReactJS works and how to use it.<br>
